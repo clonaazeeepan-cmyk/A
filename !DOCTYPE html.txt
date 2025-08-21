@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Te Amo 💖</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+  }
+  .teamo {
+    position: absolute;
+    color: #ff69b4;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    pointer-events: none;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+<script>
+  function crearTeAmo() {
+    const div = document.createElement('div');
+    div.className = 'teamo';
+    div.innerText = 'Te Amo ❤️';
+    div.style.left = Math.random() * window.innerWidth + 'px';
+    div.style.top = Math.random() * window.innerHeight + 'px';
+    div.style.fontSize = (20 + Math.random()*50) + 'px';
+    document.body.appendChild(div);
+
+    let dx = (Math.random() - 0.5) * 4;
+    let dy = (Math.random() - 0.5) * 4;
+
+    function mover() {
+      let x = parseFloat(div.style.left);
+      let y = parseFloat(div.style.top);
+      x += dx;
+      y += dy;
+      if(x < 0 || x > window.innerWidth - 50) dx *= -1;
+      if(y < 0 || y > window.innerHeight - 50) dy *= -1;
+      div.style.left = x + 'px';
+      div.style.top = y + 'px';
+      requestAnimationFrame(mover);
+    }
+    mover();
+  }
+
+  for(let i=0; i<30; i++) crearTeAmo();
+  setInterval(crearTeAmo, 2000);
+</script>
+</body>
+</html>
